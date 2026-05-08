@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RELEA — Tu librería, bien leída.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #FDFAF4;
+  --ink: #18140F;
+  --ink-mid: #4A4035;
+  --ink-muted: #8A7F72;
+  --red: #C0392B;
+  --red-pale: #FDF0EE;
+  --amber: #D4813A;
+  --amber-pale: #FDF5EC;
+  --teal: #1A7A6E;
+  --teal-pale: #E8F5F3;
+  --indigo: #3B4FA8;
+  --indigo-pale: #EEF0FA;
+  --border: rgba(24,20,15,0.09);
+  --cream: #F0EBE0;
+  --white: #FFFFFF;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 6%;
+  background: rgba(253,250,244,0.93); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.45rem; font-weight: 700; letter-spacing: -0.5px;
+  color: var(--ink); text-decoration: none;
+}
+.logo span { color: var(--red); }
+.nav-cta {
+  font-family: 'DM Sans', sans-serif; font-size: 0.85rem; font-weight: 500;
+  padding: 0.5rem 1.3rem; background: var(--red); color: #fff;
+  border: none; border-radius: 4px; cursor: pointer; text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+}
+.nav-cta:hover { background: #A93224; transform: translateY(-1px); }
+
+/* HERO */
+.hero {
+  min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr;
+  padding-top: 64px; overflow: hidden;
+}
+.hero-left {
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 5rem 3.5rem 5rem 6%;
+}
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2.5px;
+  color: var(--red); font-weight: 500; margin-bottom: 1.6rem;
+}
+.eyebrow::before { content: ''; display: block; width: 22px; height: 1px; background: var(--red); }
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.8rem, 5vw, 4.6rem); font-weight: 700;
+  line-height: 1.07; letter-spacing: -1.5px; margin-bottom: 1rem;
+}
+h1 em { font-style: italic; color: var(--red); }
+.hero-sub {
+  font-size: 1rem; color: var(--ink-mid); line-height: 1.7;
+  max-width: 340px; margin-bottom: 2.5rem;
+}
+.btn-main {
+  display: inline-flex; align-items: center; gap: 9px;
+  padding: 0.85rem 1.9rem; background: var(--red); color: #fff;
+  font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 500;
+  border: none; border-radius: 4px; cursor: pointer; text-decoration: none;
+  align-self: flex-start; transition: background 0.2s, transform 0.15s;
+}
+.btn-main:hover { background: #A93224; transform: translateY(-1px); }
+.btn-main svg { transition: transform 0.2s; }
+.btn-main:hover svg { transform: translateX(3px); }
+.hero-badge {
+  margin-top: 1.3rem; font-size: 0.76rem; color: var(--ink-muted);
+  display: flex; align-items: center; gap: 7px;
+}
+.dot-live {
+  width: 7px; height: 7px; border-radius: 50%; background: #4CAF50;
+  animation: blink 2.2s ease-in-out infinite; flex-shrink: 0;
+}
+@keyframes blink { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.55;transform:scale(.8)} }
+
+.hero-right {
+  background: var(--ink); display: flex; align-items: center; justify-content: center;
+  padding: 3rem 5%; position: relative; overflow: hidden;
+}
+.hero-right::before {
+  content: ''; position: absolute; width: 320px; height: 320px; border-radius: 50%;
+  background: rgba(192,57,43,0.14); top: -80px; right: -80px; pointer-events: none;
+}
+.hero-right::after {
+  content: ''; position: absolute; width: 200px; height: 200px; border-radius: 50%;
+  background: rgba(212,129,58,0.1); bottom: -40px; left: -40px; pointer-events: none;
+}
+
+/* MOCKUP */
+.mockup {
+  width: 100%; max-width: 500px; background: #1F1B16; border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.07); box-shadow: 0 32px 72px rgba(0,0,0,0.55);
+  overflow: hidden; animation: rise 0.9s ease-out both; position: relative; z-index: 2;
+}
+@keyframes rise { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:none} }
+.mtop {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 11px 15px; background: #15120E; border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.mdots { display: flex; gap: 5px; }
+.mdot { width: 10px; height: 10px; border-radius: 50%; }
+.dr{background:#C0392B} .dy{background:#D4813A} .dg{background:#3C7A50}
+.mtitle { font-size: 0.65rem; color: rgba(255,255,255,0.25); letter-spacing: 1px; text-transform: uppercase; }
+.mbody { padding: 18px; }
+.mrow { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 16px; }
+.mlabel { font-size: 0.6rem; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 1px; }
+.mdate { font-size: 0.6rem; color: rgba(255,255,255,0.2); }
+.mcards { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin-bottom: 16px; }
+.mcard {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 6px; padding: 10px 9px;
+}
+.mcard-lbl { font-size: 0.56rem; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing:.7px; margin-bottom: 5px; }
+.mcard-val { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; color: rgba(255,255,255,0.85); line-height: 1; }
+.mcard-sub { font-size: 0.56rem; margin-top: 3px; }
+.up{color:#4CAF50} .dn{color:#C0392B}
+.mchart { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 6px; padding: 12px; margin-bottom: 12px; }
+.mchart-lbl { font-size: 0.57rem; color: rgba(255,255,255,0.25); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
+.mbars { display: flex; align-items: flex-end; gap: 4px; height: 52px; }
+.mb { flex: 1; border-radius: 3px 3px 0 0; }
+.mb1{height:42%;background:#C0392B;opacity:.6} .mb2{height:62%;background:#C0392B;opacity:.7}
+.mb3{height:50%;background:#C0392B;opacity:.65} .mb4{height:78%;background:#D4813A;opacity:.8}
+.mb5{height:55%;background:#C0392B;opacity:.65} .mb6{height:68%;background:#C0392B;opacity:.7}
+.mb7{height:92%;background:#D4813A;opacity:1}
+.mitems { display: flex; flex-direction: column; gap: 6px; }
+.mitem {
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(255,255,255,0.03); border-radius: 5px; padding: 7px 9px;
+  border: 1px solid rgba(255,255,255,0.04);
+}
+.mitem-name { font-size: 0.64rem; color: rgba(255,255,255,0.55); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px; }
+.mbadge { font-size: 0.55rem; padding: 2px 7px; border-radius: 20px; font-weight: 500; white-space: nowrap; }
+.bg{background:rgba(76,175,80,.14);color:#66BB6A}
+.br{background:rgba(192,57,43,.2);color:#E07060}
+.bo{background:rgba(212,129,58,.15);color:#D4813A}
+
+/* SECTIONS */
+.section { padding: 5.5rem 6%; }
+.inner { max-width: 1080px; margin: 0 auto; }
+.sec-eye {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 0.68rem; text-transform: uppercase; letter-spacing: 2.5px; font-weight: 500; margin-bottom: 1.1rem;
+}
+h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.9rem, 3.5vw, 2.8rem); font-weight: 700; line-height: 1.12; letter-spacing: -1px;
+}
+h2 em { font-style: italic; }
+
+/* PROBLEMA */
+.prob-mod { background: var(--bg); border-top: 1px solid var(--border); }
+.prob-grid {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 1px;
+  background: var(--border); border: 1px solid var(--border);
+  border-radius: 8px; overflow: hidden; margin-top: 2.8rem;
+}
+.prob-card { padding: 2rem 1.6rem; background: var(--bg); transition: background 0.2s; }
+.prob-card:hover { background: var(--cream); }
+.prob-accent {
+  display: inline-block; width: 34px; height: 34px; border-radius: 8px;
+  font-size: 1rem; line-height: 34px; text-align: center; margin-bottom: 1rem;
+}
+.ac-red{background:var(--red-pale)} .ac-amber{background:var(--amber-pale)} .ac-teal{background:var(--teal-pale)}
+.prob-card h3 { font-size: 0.92rem; font-weight: 500; color: var(--ink); margin-bottom: 0.4rem; }
+.prob-card p { font-size: 0.82rem; color: var(--ink-muted); line-height: 1.6; }
+
+/* MÓDULOS */
+.modulos-bg { background: var(--cream); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.mod-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: end; margin-bottom: 2.8rem; }
+.mod-desc { font-size: 0.95rem; color: var(--ink-mid); line-height: 1.7; max-width: 380px; align-self: center; }
+.mod-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; }
+.mod-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 8px; padding: 1.6rem 1.4rem;
+  transition: border-color 0.2s, transform 0.2s;
+  position: relative; overflow: hidden;
+}
+.mod-card::after {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+  width: 3px; opacity: 0; transition: opacity 0.25s;
+}
+.mod-card:hover { border-color: transparent; transform: translateY(-2px); }
+.mod-card:hover::after { opacity: 1; }
+.card-r::after{background:var(--red)} .card-a::after{background:var(--amber)}
+.card-t::after{background:var(--teal)} .card-i::after{background:var(--indigo)}
+.mod-icon { width: 38px; height: 38px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; margin-bottom: 1rem; }
+.ir{background:var(--red-pale)} .ia{background:var(--amber-pale)} .it{background:var(--teal-pale)} .ii{background:var(--indigo-pale)}
+.mod-card h3 { font-size: 0.88rem; font-weight: 500; color: var(--ink); margin-bottom: 0.3rem; }
+.mod-card p { font-size: 0.78rem; color: var(--ink-muted); line-height: 1.55; }
+
+/* ESTADO */
+.estado { background: var(--ink); color: #F2ECE1; }
+.estado-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+.estado-badge {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: rgba(76,175,80,.12); border: 1px solid rgba(76,175,80,.22);
+  color: #81C784; font-size: 0.72rem; font-weight: 500;
+  padding: 0.35rem 0.9rem; border-radius: 50px; margin-bottom: 1.5rem;
+}
+.estado h2 { color: #F2ECE1; }
+.estado h2 em { color: var(--amber); font-style: italic; }
+.estado-desc { font-size: 0.92rem; color: rgba(242,236,225,0.55); line-height: 1.75; margin: 1.2rem 0 2rem; }
+.facts { display: flex; flex-direction: column; gap: 1.2rem; }
+.fact {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 1.2rem 1.4rem; background: rgba(255,255,255,0.04);
+  border-radius: 6px; border: 1px solid rgba(255,255,255,0.06);
+}
+.fact-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; margin-top: 4px; }
+.fd-red{background:var(--red)} .fd-amber{background:var(--amber)} .fd-green{background:#4CAF50}
+.fact h4 { font-size: 0.85rem; font-weight: 500; color: rgba(242,236,225,0.85); margin-bottom: 2px; }
+.fact p { font-size: 0.78rem; color: rgba(242,236,225,0.4); line-height: 1.5; }
+
+/* CIERRE */
+.cierre {
+  background: var(--bg); text-align: center;
+  padding: 7rem 6%; border-top: 1px solid var(--border);
+  position: relative; overflow: hidden;
+}
+.cierre::before {
+  content: '"'; font-family: 'Playfair Display', serif; font-size: 18rem;
+  color: rgba(192,57,43,0.05); position: absolute; top: -2rem; left: 50%;
+  transform: translateX(-50%); line-height: 1; pointer-events: none;
+}
+.cierre-inner { max-width: 640px; margin: 0 auto; position: relative; z-index: 2; }
+.cierre h2 { font-size: clamp(2.2rem, 5vw, 3.8rem); letter-spacing: -1.5px; margin-bottom: 1.2rem; }
+.cierre h2 em { color: var(--red); }
+.cierre-sub {
+  font-size: 0.95rem; color: var(--ink-muted); margin-bottom: 2.2rem;
+  font-style: italic; font-family: 'Playfair Display', serif; line-height: 1.6;
+}
+.btn-outline {
+  display: inline-flex; align-items: center; gap: 9px;
+  padding: 0.85rem 1.9rem; background: transparent; color: var(--ink);
+  font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 500;
+  border: 1.5px solid var(--ink); border-radius: 4px;
+  cursor: pointer; text-decoration: none; transition: background 0.2s, color 0.2s;
+}
+.btn-outline:hover { background: var(--ink); color: var(--bg); }
+.btn-outline svg { transition: transform 0.2s; }
+.btn-outline:hover svg { transform: translateX(3px); }
+
+/* FOOTER */
+footer {
+  background: #0F0C09; color: rgba(242,236,225,0.35);
+  padding: 2rem 6%; border-top: 1px solid rgba(255,255,255,0.05);
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+}
+.footer-logo { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; color: rgba(242,236,225,0.6); }
+.footer-logo span { color: var(--red); }
+footer p { font-size: 0.76rem; }
+footer a { font-size: 0.76rem; color: rgba(242,236,225,0.3); text-decoration: none; transition: color 0.2s; }
+footer a:hover { color: rgba(242,236,225,0.7); }
+
+/* REVEAL */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.on { opacity: 1; transform: none; }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-left { padding: 4rem 6%; }
+  .hero-right { min-height: 380px; padding: 3rem 6%; }
+  .prob-grid { grid-template-columns: 1fr; }
+  .mod-intro { grid-template-columns: 1fr; gap: 1.5rem; }
+  .mod-grid { grid-template-columns: repeat(2,1fr); }
+  .estado-grid { grid-template-columns: 1fr; gap: 3rem; }
+}
+@media (max-width: 580px) {
+  .section { padding: 4rem 5%; }
+  .mod-grid { grid-template-columns: 1fr; }
+  .mcards { grid-template-columns: repeat(2,1fr); }
+  footer { flex-direction: column; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">RE<span>L</span>EA</a>
+  <a href="#cierre" class="nav-cta">Quiero saber más</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="eyebrow">Software para librerías</div>
+    <h1>Tu librería,<br><em>bien leída.</em></h1>
+    <p class="hero-sub">El software diseñado para librerías independientes que quieren gestionar más y preocuparse menos.</p>
+    <a href="#modulos" class="btn-main">
+      Conoce RELEA
+      <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+    <div class="hero-badge">
+      <div class="dot-live"></div>
+      En funcionamiento en librería real
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="mockup">
+      <div class="mtop">
+        <div class="mdots"><div class="mdot dr"></div><div class="mdot dy"></div><div class="mdot dg"></div></div>
+        <div class="mtitle">RELEA — Dashboard</div>
+        <div></div>
+      </div>
+      <div class="mbody">
+        <div class="mrow">
+          <div class="mlabel">Resumen del día</div>
+          <div class="mdate">Hoy · 14:32</div>
+        </div>
+        <div class="mcards">
+          <div class="mcard">
+            <div class="mcard-lbl">Ventas hoy</div>
+            <div class="mcard-val">$84.900</div>
+            <div class="mcard-sub up">↑ +12%</div>
+          </div>
+          <div class="mcard">
+            <div class="mcard-lbl">Títulos</div>
+            <div class="mcard-val">23</div>
+            <div class="mcard-sub up">↑ 8 ventas</div>
+          </div>
+          <div class="mcard">
+            <div class="mcard-lbl">Stock crítico</div>
+            <div class="mcard-val">4</div>
+            <div class="mcard-sub dn">↓ Acción</div>
+          </div>
+        </div>
+        <div class="mchart">
+          <div class="mchart-lbl">Últimos 7 días</div>
+          <div class="mbars">
+            <div class="mb mb1"></div><div class="mb mb2"></div><div class="mb mb3"></div>
+            <div class="mb mb4"></div><div class="mb mb5"></div><div class="mb mb6"></div>
+            <div class="mb mb7"></div>
+          </div>
+        </div>
+        <div class="mitems">
+          <div class="mitem">
+            <span class="mitem-name">Bolaño — Los detectives salvajes</span>
+            <span class="mbadge bo">Consignación</span>
+          </div>
+          <div class="mitem">
+            <span class="mitem-name">Zambra — Bonsái</span>
+            <span class="mbadge bg">Firme · 3 ud</span>
+          </div>
+          <div class="mitem">
+            <span class="mitem-name">Lemebel — Tengo miedo torero</span>
+            <span class="mbadge br">Stock bajo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEMA -->
+<section class="section prob-mod" id="problema">
+  <div class="inner">
+    <div class="reveal">
+      <div class="sec-eye" style="color:var(--red);">
+        <span style="display:block;width:18px;height:1px;background:var(--red)"></span>El problema
+      </div>
+      <h2>Gestionar una librería<br>no debería ser <em style="color:var(--red)">tan difícil</em></h2>
+    </div>
+    <div class="prob-grid reveal">
+      <div class="prob-card">
+        <div class="prob-accent ac-red">📋</div>
+        <h3>Sin control del inventario</h3>
+        <p>¿Cuántos quedan? ¿Son firme o consignación? Excel desactualizado, cuadernos con tachaduras.</p>
+      </div>
+      <div class="prob-card">
+        <div class="prob-accent ac-amber">⏳</div>
+        <h3>Tiempo perdido</h3>
+        <p>Conciliaciones, pedidos y documentos a mano. Lento, repetitivo, propenso a errores.</p>
+      </div>
+      <div class="prob-card">
+        <div class="prob-accent ac-teal">📉</div>
+        <h3>Decisiones sin datos</h3>
+        <p>¿Qué reponer? ¿Qué vende de verdad? Las respuestas están enterradas en planillas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MÓDULOS -->
+<section class="section modulos-bg" id="modulos">
+  <div class="inner">
+    <div class="mod-intro">
+      <div class="reveal">
+        <div class="sec-eye" style="color:var(--teal);">
+          <span style="display:block;width:18px;height:1px;background:var(--teal)"></span>RELEA
+        </div>
+        <h2>Todo lo que necesita<br><em style="color:var(--teal)">tu librería</em></h2>
+      </div>
+      <p class="mod-desc reveal">No reemplaza al librero, lo potencia. Un software que habla el idioma de las librerías: firme, consignación, GDD, distribuidoras, ISBN.</p>
+    </div>
+
+    <div class="mod-grid">
+      <div class="mod-card card-r reveal">
+        <div class="mod-icon ir">🖥️</div>
+        <h3>POS Inteligente</h3>
+        <p>Ventas rápidas por ISBN, autor o título. Sin fricción.</p>
+      </div>
+      <div class="mod-card card-a reveal">
+        <div class="mod-icon ia">📦</div>
+        <h3>Inventario por lotes</h3>
+        <p>Firme y consignación por separado. Control real y claro.</p>
+      </div>
+      <div class="mod-card card-t reveal">
+        <div class="mod-icon it">🔄</div>
+        <h3>Reposición automática</h3>
+        <p>Stock bajo detectado, sugerencia lista. Nunca más sin el título que más vende.</p>
+      </div>
+      <div class="mod-card card-i reveal">
+        <div class="mod-icon ii">🏢</div>
+        <h3>Pedidos a distribuidoras</h3>
+        <p>Órdenes generadas desde el sistema. Proveedores, plazos y seguimiento.</p>
+      </div>
+      <div class="mod-card card-r reveal">
+        <div class="mod-icon ir">📄</div>
+        <h3>Documentos</h3>
+        <p>GDD, facturas y guías automáticas. Cada operación, bien cerrada.</p>
+      </div>
+      <div class="mod-card card-a reveal">
+        <div class="mod-icon ia">📊</div>
+        <h3>Dashboard</h3>
+        <p>Ventas del día, rotación, stock crítico. Los datos que importan, en un vistazo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ESTADO -->
+<section class="section estado" id="estado">
+  <div class="inner">
+    <div class="estado-grid">
+      <div>
+        <div class="estado-badge reveal"><div class="dot-live"></div>Sistema activo</div>
+        <h2 class="reveal">RELEA ya está<br>en <em>funcionamiento</em></h2>
+        <p class="estado-desc reveal">No es un proyecto en papel. Está operando en una librería independiente real, procesando ventas diarias y mejorando con feedback concreto. Buscamos librerías que quieran sumarse.</p>
+        <a href="mailto:somosrelea@gmail.com" class="btn-main reveal" style="background:var(--amber);">
+          Quiero saber más
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <div class="facts reveal">
+        <div class="fact">
+          <div class="fact-dot fd-green"></div>
+          <div>
+            <h4>En uso real</h4>
+            <p>Operando en librería independiente con ventas e inventario gestionados a diario.</p>
+          </div>
+        </div>
+        <div class="fact">
+          <div class="fact-dot fd-amber"></div>
+          <div>
+            <h4>Desarrollo activo</h4>
+            <p>Fase de validación continua. El sistema crece cada semana con feedback real.</p>
+          </div>
+        </div>
+        <div class="fact">
+          <div class="fact-dot fd-red"></div>
+          <div>
+            <h4>Hecho por un librero</h4>
+            <p>Nació en el mostrador. Pensado para equipos pequeños, no para grandes corporaciones.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CIERRE -->
+<section class="cierre" id="cierre">
+  <div class="cierre-inner">
+    <h2 class="reveal">Menos tiempo en el computador,<br><em>más tiempo</em> en tu librería.</h2>
+    <p class="cierre-sub reveal">RELEA es para los que aman los libros, no las planillas.</p>
+    <a href="mailto:somosrelea@gmail.com" class="btn-outline reveal">
+      Quiero saber más
+      <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">RE<span>L</span>EA</div>
+  <p>Software para librerías independientes · 2025</p>
+  <a href="mailto:somosrelea@gmail.com">somosrelea@gmail.com</a>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('on'); });
+}, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

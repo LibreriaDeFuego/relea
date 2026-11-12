@@ -79,6 +79,7 @@ h1, h2, h3, p { margin: 0; }
 .footer--crema { background: var(--crema); }
 .footer a { text-decoration: none; }
 .footer a:hover { text-decoration: underline; }
+.footer__lema { white-space: nowrap; }
 .footer__canales { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.375rem 1.125rem; }
 .footer__canales a { display: inline-flex; align-items: center; gap: 0.375rem; font-weight: 800; }
 .footer__canales svg { width: 1rem; height: 1rem; }
@@ -177,8 +178,6 @@ h1, h2, h3, p { margin: 0; }
 .separador { display: flex; align-items: center; gap: 0.75rem; margin-top: 1.5rem; font-size: 0.8125rem; font-weight: 700; }
 .separador::before, .separador::after { content: ""; flex: 1; height: 0.125rem; background: var(--negro); }
 .separador + .form { margin-top: 1rem; }
-.otros-canales { margin-top: 1.25rem; font-size: 0.8125rem; font-weight: 600; }
-.otros-canales a { font-weight: 800; text-underline-offset: 3px; }
 
 /* ---------- Preguntas frecuentes ---------- */
 .faq { display: flex; flex-direction: column; gap: 1.875rem; margin-top: 2.25rem; }

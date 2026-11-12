@@ -10,7 +10,6 @@ Sitio oficial de RELEA (relea.cl). HTML y CSS estáticos, sin build.
 ## Imágenes provisionales
 Estos archivos son sustitutos; basta reemplazarlos con el mismo nombre (y ajustar el `alt` en el HTML):
 - `assets/main-hero.jpg`: foto del inicio
-- `assets/faq.jpg`: foto de Preguntas frecuentes
 
 ## Formulario de contacto
 No hay backend: `site.js` abre el correo del visitante con el mensaje ya escrito.

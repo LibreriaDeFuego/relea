@@ -170,9 +170,8 @@ h1, h2, h3, p { margin: 0; }
 .form__enviar { display: flex; justify-content: flex-end; }
 .form ::placeholder { color: #6b6b6b; opacity: 1; }
 .chips { display: grid; grid-template-columns: 1fr; gap: 0.625rem; margin-top: 1.5rem; }
-.chip { display: block; padding: 0.625rem 0.875rem; background: var(--negro); border-radius: 0.875rem; text-decoration: none; }
-.chip small { display: block; font-size: 0.6875rem; font-weight: 700; color: var(--naranja); }
-.chip span { display: block; margin-top: 0.125rem; font-size: 0.8125rem; font-weight: 700; color: var(--blanco); }
+.chip { display: block; padding: 0.875rem; background: var(--negro); border-radius: 0.875rem; text-align: center; text-decoration: none; }
+.chip span { display: block; font-size: 0.875rem; font-weight: 700; color: var(--blanco); }
 
 /* ---------- Preguntas frecuentes ---------- */
 .faq { display: flex; flex-direction: column; gap: 1.875rem; margin-top: 2.25rem; }

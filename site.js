@@ -1,22 +1,20 @@
-// Menú colapsable (móvil)
+// Pestañas del menú en móvil: centra la página actual y desvanece los bordes
+// cuando hay más pestañas hacia un lado.
 (function () {
-  var toggle = document.querySelector('.nav__toggle');
   var menu = document.getElementById('menu');
-  if (!toggle || !menu) return;
-  function set(open) {
-    menu.classList.toggle('is-open', open);
-    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    toggle.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+  if (!menu) return;
+  function bordes() {
+    var max = menu.scrollWidth - menu.clientWidth;
+    menu.classList.toggle('fade-l', menu.scrollLeft > 2);
+    menu.classList.toggle('fade-r', menu.scrollLeft < max - 2);
   }
-  toggle.addEventListener('click', function () {
-    set(toggle.getAttribute('aria-expanded') !== 'true');
-  });
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') set(false);
-  });
-  document.addEventListener('click', function (e) {
-    if (!e.target.closest('.nav')) set(false);
-  });
+  var actual = menu.querySelector('[aria-current="page"]');
+  if (actual && menu.scrollWidth > menu.clientWidth) {
+    menu.scrollLeft = actual.offsetLeft - menu.offsetLeft - (menu.clientWidth - actual.offsetWidth) / 2;
+  }
+  bordes();
+  menu.addEventListener('scroll', bordes, { passive: true });
+  window.addEventListener('resize', bordes);
 })();
 
 // Formulario de contacto: abre el correo del visitante con el mensaje listo.

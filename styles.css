@@ -157,7 +157,7 @@ h1, h2, h3, p { margin: 0; }
 
 /* ---------- Contacto ---------- */
 .pildora { position: relative; margin-top: 1.875rem; }
-.pildora__foto { height: 10.625rem; border-radius: 6.5625rem; overflow: hidden; background: var(--crema-fuerte); }
+.pildora__foto { height: 10.625rem; border-radius: 4rem 0.75rem 4rem 0.75rem; overflow: hidden; background: var(--crema-fuerte); }
 .pildora__foto img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 35%; }
 .burbuja { position: relative; width: 15.3125rem; max-width: 90%; margin: -2.5rem auto 0; text-align: center; padding: 0.875rem 1.25rem; background: var(--blanco); border-radius: 1.125rem 1.125rem 1.125rem 0.25rem; }
 .burbuja h1 { font-size: 1.875rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1; }

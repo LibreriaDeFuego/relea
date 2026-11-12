@@ -9,7 +9,6 @@ Sitio oficial de RELEA (relea.cl). HTML y CSS estáticos, sin build.
 
 ## Imágenes provisionales
 Estos archivos son sustitutos; basta reemplazarlos con el mismo nombre (y ajustar el `alt` en el HTML):
-- `assets/logo.svg`: logo oficial de RELEA
 - `assets/main-hero.jpg`: foto del inicio
 - `assets/faq.jpg`: foto de Preguntas frecuentes
 

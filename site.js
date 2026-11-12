@@ -36,6 +36,6 @@
       '',
       v('mensaje')
     ].join('\n');
-    window.location.href = 'mailto:relea@gmail.com?subject=' + encodeURIComponent(asunto) + '&body=' + encodeURIComponent(cuerpo);
+    window.location.href = 'mailto:somosrelea@gmail.com?subject=' + encodeURIComponent(asunto) + '&body=' + encodeURIComponent(cuerpo);
   });
 })();

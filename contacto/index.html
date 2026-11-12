@@ -46,6 +46,7 @@
           <p>Cuéntanos cómo trabajas hoy y qué te gustaría ordenar.</p>
         </div>
       </div>
+      <div class="contacto-grid">
       <form class="form" id="form-contacto" action="mailto:somosrelea@gmail.com" method="post" enctype="text/plain">
         <div class="form__fila">
           <div><label for="c-nombre">Nombre</label><input id="c-nombre" name="nombre" type="text" placeholder="Tu nombre" autocomplete="name" required></div>
@@ -55,15 +56,18 @@
         <div><label for="c-mensaje">Mensaje</label><textarea id="c-mensaje" name="mensaje" rows="4" placeholder="Cuéntanos qué necesitas" required></textarea></div>
         <div class="form__enviar"><button type="submit" class="btn"><span>Enviar mensaje</span><span class="btn__dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></button></div>
       </form>
-      <div class="chips">
-        <a class="chip" href="mailto:somosrelea@gmail.com"><span>Correo</span></a>
-        <a class="chip" href="https://wa.me/56978704682" target="_blank" rel="noopener"><span>WhatsApp</span></a>
-        <a class="chip" href="https://www.instagram.com/relea.app" target="_blank" rel="noopener"><span>Instagram</span></a>
+      <aside class="canales" aria-labelledby="canales-titulo">
+        <h2 id="canales-titulo">¿Prefieres otro canal?</h2>
+        <p>Escríbenos donde te acomode.</p>
+        <a href="https://wa.me/56978704682" target="_blank" rel="noopener"><span class="canales__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1-1.5-2-1-1 .8a4 4 0 0 1-1.8-1.8l.8-1-1-2z"/></svg></span>WhatsApp</a>
+        <a href="mailto:somosrelea@gmail.com"><span class="canales__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>Correo</a>
+        <a href="https://www.instagram.com/relea.app" target="_blank" rel="noopener"><span class="canales__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="0.6" fill="currentColor"/></svg></span>Instagram</a>
+      </aside>
       </div>
     </main>
   </div>
 </div>
-<footer class="footer"><span>© 2026 RELEA · <a href="https://app.relea.cl">app.relea.cl</a> · Hecho en Chile por libreros</span></footer>
+<footer class="footer"><nav class="footer__canales" aria-label="Canales de contacto"><a href="mailto:somosrelea@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>Correo</a><a href="https://wa.me/56978704682" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1-1.5-2-1-1 .8a4 4 0 0 1-1.8-1.8l.8-1-1-2z"/></svg>WhatsApp</a><a href="https://www.instagram.com/relea.app" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="0.6" fill="currentColor"/></svg>Instagram</a></nav><span>© 2026 RELEA · <a href="https://app.relea.cl">app.relea.cl</a> · Hecho en Chile por libreros</span></footer>
 <script src="../site.js" defer></script>
 </body>
 </html>
